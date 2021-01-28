@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 
 const ColorBlock = (props) => {
+  let copyDisplayText = "Click anywhere to copy";
   const [colorRGB, updateColorRGB] = useState([
     Math.floor(255 * Math.random()),
     Math.floor(255 * Math.random()),
@@ -31,7 +32,11 @@ const ColorBlock = (props) => {
   const [colorHex, updateColorHex] = useState(rgbToHex(colorRGB));
 
   useEffect(() => {
-    document.addEventListener("keydown", randomizeColor);
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        randomizeColor();
+      }
+    });
   }, []);
 
   const handleCheckBoxChange = (e) => {
@@ -40,7 +45,15 @@ const ColorBlock = (props) => {
   };
 
   const clipboardCopy = (textToCopy) => {
-    navigator.clipboard.writeText(textToCopy);
+    navigator.clipboard.writeText(textToCopy).then(
+      function () {
+        copyDisplayText = "Copied!";
+      },
+      function () {
+        copyDisplayText = "Sorry, text failed to copy:(";
+      }
+    );
+    return copyDisplayText;
   };
 
   const [displayHex, updateDisplayHex] = useState(false);
@@ -67,7 +80,7 @@ const ColorBlock = (props) => {
         checked={props.isPinned}
       ></input> */}
       <p>{displayHex ? colorHex : null}</p>
-      <p>{displayHex ? "click to copy" : null}</p>
+      <p className="copyInstructions">{displayHex ? copyDisplayText : null}</p>
     </div>
   );
 };
