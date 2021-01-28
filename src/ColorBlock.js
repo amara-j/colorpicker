@@ -1,7 +1,10 @@
 import { React, useState, useEffect } from "react";
 
 const ColorBlock = (props) => {
-  let copyDisplayText = "Click anywhere to copy";
+  const [copyDisplayText, updateCopyDisplayText] = useState(
+    "Click anywhere to copy"
+  );
+
   const [colorRGB, updateColorRGB] = useState([
     Math.floor(255 * Math.random()),
     Math.floor(255 * Math.random()),
@@ -16,6 +19,7 @@ const ColorBlock = (props) => {
     const randomHex = rgbToHex(randomRGB);
     updateColorRGB(randomRGB);
     updateColorHex(randomHex);
+    updateCopyDisplayText("Click anywhere to copy");
   };
 
   const rgbToHex = (rgbArray) => {
@@ -47,13 +51,12 @@ const ColorBlock = (props) => {
   const clipboardCopy = (textToCopy) => {
     navigator.clipboard.writeText(textToCopy).then(
       function () {
-        copyDisplayText = "Copied!";
+        updateCopyDisplayText("Copied!");
       },
       function () {
-        copyDisplayText = "Sorry, text failed to copy:(";
+        updateCopyDisplayText("Sorry, text failed to copy:(");
       }
     );
-    return copyDisplayText;
   };
 
   const [displayHex, updateDisplayHex] = useState(false);
