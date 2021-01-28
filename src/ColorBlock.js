@@ -18,7 +18,7 @@ const ColorBlock = (props) => {
   };
 
   const rgbToHex = (rgbArray) => {
-    let hex = "#";
+    let hex = "";
     rgbArray.forEach((element) => {
       const elementString = element.toString(16);
       var hexComponent =
@@ -40,32 +40,36 @@ const ColorBlock = (props) => {
   };
 
   const clipboardCopy = (textToCopy) => {
-    navigator.clipboard.writeText(textToCopy).then(
-      function () {
-        /* clipboard success message/action*/
-      },
-      function () {
-        /* clipboard failure message/action*/
-      }
-    );
+    navigator.clipboard.writeText(textToCopy);
+  };
+
+  const [displayHex, updateDisplayHex] = useState(false);
+
+  const handleMouseEnter = () => {
+    updateDisplayHex(true);
+  };
+
+  const handleMouseOut = () => {
+    updateDisplayHex(false);
   };
 
   return (
-    <div className="ColorBlock" style={{ backgroundColor: `rgb(${colorRGB})` }}>
-      <p onClick={() => clipboardCopy(colorRGB)}>
-        {"rgb: " + colorRGB.join(",")}
-      </p>
-      <p onClick={() => clipboardCopy(colorHex)}> {"hex: " + colorHex}</p>
-      <input
+    <div
+      className="ColorBlock"
+      style={{ backgroundColor: `rgb(${colorRGB})` }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseOut}
+      onClick={() => clipboardCopy(colorHex)}
+    >
+      {/* <input
         type="checkbox"
         onChange={(e) => handleCheckBoxChange(e)}
         checked={props.isPinned}
-      ></input>
+      ></input> */}
+      <p>{displayHex ? colorHex : null}</p>
+      <p>{displayHex ? "click to copy" : null}</p>
     </div>
   );
 };
-
-//randomize color instead makes an rgb array of 4 random colors
-// for any component not checked, it updates color
 
 export default ColorBlock;
