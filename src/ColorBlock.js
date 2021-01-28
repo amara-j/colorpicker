@@ -1,21 +1,9 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 
 const ColorBlock = () => {
 
 const [colorRGB, updateColorRGB] = useState([Math.floor(255*Math.random()),Math.floor(255*Math.random()),Math.floor(255*Math.random())]);
 const [isPinned, updatePin] = useState(false);
-
-const rgbToHex = (rgbArray) => {
-  let hex = '#';
-  rgbArray.forEach(element => 
-    {const elementString = element.toString(16);
-    var hexComponent= elementString.length === 1 ? "0" + elementString : elementString;
-    hex += hexComponent})
-    return hex
-}
-
-const [colorHex, updateColorHex] = useState(rgbToHex(colorRGB))
-
 
 const randomizeColor = () => {
     if (!isPinned) {
@@ -28,20 +16,31 @@ const randomizeColor = () => {
     updateColorHex(randomHex)
 }}
 
+const rgbToHex = (rgbArray) => {
+  let hex = '#';
+  rgbArray.forEach(element => 
+    {const elementString = element.toString(16);
+    var hexComponent= elementString.length === 1 ? "0" + elementString : elementString;
+    hex += hexComponent})
+    return hex
+}
 
-
-
+const [colorHex, updateColorHex] = useState(rgbToHex(colorRGB))
 
 const handlePinChange = () => {
     updatePin(!isPinned)
 }
+
+useEffect(()=> {
+document.addEventListener('keydown', randomizeColor)
+}, [])
+
     return (
     <div className = "ColorBlock">
-    <div onClick = {() => randomizeColor()} style={{backgroundColor: `rgb(${colorRGB})`, width: "100%", height: "700px", textAlign: "center"}}></div>
+    <div className = "ColorBlockContent" style={{backgroundColor: `rgb(${colorRGB})`}}>
+{['rgb: '+  colorRGB.join(', '), 'hex: '+colorHex].join("\n \n")}
+    </div>
    <input type = "checkbox" onClick = {() => handlePinChange()}></input>
-   <div>RGB: {colorRGB.join(', ')}</div>
-   <div>Hex: {colorHex}</div>
-   <div></div>
    </div>
     );
 }
