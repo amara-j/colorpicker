@@ -61,21 +61,29 @@ const ColorBlockContainer = () => {
         id="0"
         isPinned={blockPinState[0]}
         onChange={setBlockPinned}
+        color={colors[0]}
+        colorHex={rgbToHex(colors[0])}
       />
       <ColorBlock
         id="1"
         isPinned={blockPinState[1]}
         onChange={setBlockPinned}
+        color={colors[1]}
+        colorHex={rgbToHex(colors[1])}
       />
       <ColorBlock
         id="2"
         isPinned={blockPinState[2]}
         onChange={setBlockPinned}
+        color={colors[2]}
+        colorHex={rgbToHex(colors[2])}
       />
       <ColorBlock
         id="3"
         isPinned={blockPinState[3]}
         onChange={setBlockPinned}
+        color={colors[3]}
+        colorHex={rgbToHex(colors[3])}
       />
     </div>
   );
