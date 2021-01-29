@@ -5,21 +5,22 @@ const ColorBlock = (props) => {
     "Click anywhere to copy"
   );
 
+  // useEffect(() => {
+  //   if (!props.isPinned) {
+  //     console.log("now we change", props.id);
+  //     console.log(props.id, props.isPinned);
+  //     randomizeColor(props.isPinned);
+  //   }
+  // }, [props]);
+
   useEffect(() => {
     document.addEventListener("keydown", (e) => {
       if (e.code === "Space") {
         console.log(props.id, props.isPinned);
-        // randomizeColor(props.isPinned);
+        randomizeColor(props.isPinned);
       }
     });
   }, []);
-
-  useEffect(() => {
-    if (!props.isPinned) {
-      console.log("now we change", props.id);
-      randomizeColor(props.isPinned);
-    }
-  }, [props]);
 
   const [colorRGB, updateColorRGB] = useState([
     Math.floor(255 * Math.random()),
@@ -37,6 +38,8 @@ const ColorBlock = (props) => {
       updateColorRGB(randomRGB);
       updateColorHex(randomHex);
       updateCopyDisplayText("Click anywhere to copy");
+    } else {
+      console.log("no");
     }
   };
 
