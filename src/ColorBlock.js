@@ -12,6 +12,7 @@ const ColorBlock = (props) => {
   ]);
 
   const randomizeColor = () => {
+    console.log(props.id, props.isPinned);
     const randomRed = Math.floor(255 * Math.random());
     const randomGreen = Math.floor(255 * Math.random());
     const randomBlue = Math.floor(255 * Math.random());
@@ -43,11 +44,6 @@ const ColorBlock = (props) => {
     });
   }, []);
 
-  const handleCheckBoxChange = (e) => {
-    props.onChange(props.id, e.target.checked);
-    console.log(e.target.checked);
-  };
-
   const clipboardCopy = (textToCopy) => {
     navigator.clipboard.writeText(textToCopy).then(
       function () {
@@ -77,11 +73,11 @@ const ColorBlock = (props) => {
       onMouseLeave={handleMouseOut}
       onClick={() => clipboardCopy(colorHex)}
     >
-      {/* <input
+      <input
         type="checkbox"
-        onChange={(e) => handleCheckBoxChange(e)}
+        onChange={(e) => props.onChange(props.id, e.target.checked)}
         checked={props.isPinned}
-      ></input> */}
+      ></input>
       <p>{displayHex ? colorHex : null}</p>
       <p className="copyInstructions">{displayHex ? copyDisplayText : null}</p>
     </div>

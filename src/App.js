@@ -7,7 +7,7 @@ const ColorBlockContainer = () => {
 
   const setBlockPinned = (index, isPinned) => {
     console.log(index, isPinned);
-    let newBlockPinState = blockPinState;
+    let newBlockPinState = [...blockPinState];
     newBlockPinState[index] = isPinned;
     updatePin(newBlockPinState);
     console.log(newBlockPinState);
@@ -18,30 +18,22 @@ const ColorBlockContainer = () => {
       <ColorBlock
         id="0"
         isPinned={blockPinState[0]}
-        onChange={(index, shouldBePinned) =>
-          setBlockPinned(index, shouldBePinned)
-        }
+        onChange={setBlockPinned}
       />
       <ColorBlock
         id="1"
         isPinned={blockPinState[1]}
-        onChange={(index, shouldBePinned) =>
-          setBlockPinned(index, shouldBePinned)
-        }
+        onChange={setBlockPinned}
       />
       <ColorBlock
         id="2"
         isPinned={blockPinState[2]}
-        onChange={(index, shouldBePinned) =>
-          setBlockPinned(index, shouldBePinned)
-        }
+        onChange={setBlockPinned}
       />
       <ColorBlock
         id="3"
         isPinned={blockPinState[3]}
-        onChange={(index, shouldBePinned) =>
-          setBlockPinned(index, shouldBePinned)
-        }
+        onChange={setBlockPinned}
       />
     </div>
   );
