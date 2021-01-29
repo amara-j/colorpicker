@@ -5,22 +5,39 @@ const ColorBlock = (props) => {
     "Click anywhere to copy"
   );
 
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        console.log(props.id, props.isPinned);
+        // randomizeColor(props.isPinned);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!props.isPinned) {
+      console.log("now we change", props.id);
+      randomizeColor(props.isPinned);
+    }
+  }, [props]);
+
   const [colorRGB, updateColorRGB] = useState([
     Math.floor(255 * Math.random()),
     Math.floor(255 * Math.random()),
     Math.floor(255 * Math.random()),
   ]);
 
-  const randomizeColor = () => {
-    console.log(props.id, props.isPinned);
-    const randomRed = Math.floor(255 * Math.random());
-    const randomGreen = Math.floor(255 * Math.random());
-    const randomBlue = Math.floor(255 * Math.random());
-    const randomRGB = [randomRed, randomGreen, randomBlue];
-    const randomHex = rgbToHex(randomRGB);
-    updateColorRGB(randomRGB);
-    updateColorHex(randomHex);
-    updateCopyDisplayText("Click anywhere to copy");
+  const randomizeColor = (isPinned) => {
+    if (isPinned === false) {
+      const randomRed = Math.floor(255 * Math.random());
+      const randomGreen = Math.floor(255 * Math.random());
+      const randomBlue = Math.floor(255 * Math.random());
+      const randomRGB = [randomRed, randomGreen, randomBlue];
+      const randomHex = rgbToHex(randomRGB);
+      updateColorRGB(randomRGB);
+      updateColorHex(randomHex);
+      updateCopyDisplayText("Click anywhere to copy");
+    }
   };
 
   const rgbToHex = (rgbArray) => {
@@ -35,14 +52,6 @@ const ColorBlock = (props) => {
   };
 
   const [colorHex, updateColorHex] = useState(rgbToHex(colorRGB));
-
-  useEffect(() => {
-    document.addEventListener("keydown", (e) => {
-      if (e.code === "Space") {
-        randomizeColor();
-      }
-    });
-  }, []);
 
   const clipboardCopy = (textToCopy) => {
     navigator.clipboard.writeText(textToCopy).then(
@@ -63,6 +72,7 @@ const ColorBlock = (props) => {
 
   const handleMouseOut = () => {
     updateDisplayHex(false);
+    updateCopyDisplayText("Click anywhere to copy");
   };
 
   return (

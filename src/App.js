@@ -6,11 +6,11 @@ const ColorBlockContainer = () => {
   const [blockPinState, updatePin] = useState([false, false, false, false]);
 
   const setBlockPinned = (index, isPinned) => {
-    console.log(index, isPinned);
+    //console.log(index, isPinned);
     let newBlockPinState = [...blockPinState];
     newBlockPinState[index] = isPinned;
     updatePin(newBlockPinState);
-    console.log(newBlockPinState);
+    //console.log(newBlockPinState);
   };
 
   return (
