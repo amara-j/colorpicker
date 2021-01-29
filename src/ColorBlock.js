@@ -42,7 +42,6 @@ const ColorBlock = (props) => {
           {displayHex ? copyDisplayText : null}
         </p>
       </div>
-
       <label>
         <input
           type="checkbox"
