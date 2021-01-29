@@ -2,7 +2,8 @@ import { React, useState, useEffect } from "react";
 import ColorBlock from "./ColorBlock.js";
 
 const ColorBlockContainer = () => {
-  const numBlocks = 4;
+  const numBlocks = 5;
+
   const [blockPinState, updatePin] = useState(Array(numBlocks).fill(false));
 
   const randomizeColor = () => {
@@ -49,7 +50,7 @@ const ColorBlockContainer = () => {
   };
 
   return (
-    <div className="BlockContainer">
+    <div id="BlockContainer">
       {colors.map((color, i) => {
         return (
           <ColorBlock

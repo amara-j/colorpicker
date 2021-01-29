@@ -5,23 +5,26 @@
 }
 
 .ColorBlock {
-  font-family: url("./fonts/Open_Sans/OpenSans-Bold.ttf");
-  font-size: 70px;
   padding: 100px 0;
   height: 500px;
   text-align: center;
-  -webkit-text-stroke: 1px black;
+  font-family: url("./fonts/Open_Sans/OpenSans-ExtraBold.ttf");
+}
+
+.hexText {
+  font-size: 70px;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
   color: rgba(0, 0, 0, 0.8);
 }
 
-.BlockContainer {
+#BlockContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .copyInstructions {
-  font-size: 15px;
+  font-size: 20px;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
 }
 
 .toggleDiv {
