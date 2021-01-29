@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 
 const ColorBlock = (props) => {
   const [copyDisplayText, updateCopyDisplayText] = useState(
@@ -28,20 +28,24 @@ const ColorBlock = (props) => {
   };
 
   return (
-    <div
-      className="ColorBlock"
-      style={{ backgroundColor: `rgb(${props.color})` }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseOut}
-      onClick={() => clipboardCopy(props.colorHex)}
-    >
+    <div>
+      <div
+        className="ColorBlock"
+        style={{ backgroundColor: `rgb(${props.color})` }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseOut}
+        onClick={() => clipboardCopy(props.colorHex)}
+      >
+        <p>{displayHex ? props.colorHex : null}</p>
+        <p className="copyInstructions">
+          {displayHex ? copyDisplayText : null}
+        </p>
+      </div>
       <input
         type="checkbox"
         onChange={(e) => props.onChange(props.id, e.target.checked)}
         checked={props.isPinned}
       ></input>
-      <p>{displayHex ? props.colorHex : null}</p>
-      <p className="copyInstructions">{displayHex ? copyDisplayText : null}</p>
     </div>
   );
 };

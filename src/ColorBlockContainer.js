@@ -53,6 +53,7 @@ const ColorBlockContainer = () => {
       {colors.map((color, i) => {
         return (
           <ColorBlock
+            key={i}
             id={i}
             isPinned={blockPinState[i]}
             onChange={setBlockPinned}
