@@ -3,7 +3,8 @@ import { React, useState, useEffect } from "react";
 import ColorBlock from "./ColorBlock.js";
 
 const ColorBlockContainer = () => {
-  const [blockPinState, updatePin] = useState([false, false, false, false]);
+  const numBlocks = 10;
+  const [blockPinState, updatePin] = useState(Array(numBlocks).fill(false));
 
   const randomizeColor = () => {
     const randomRed = Math.floor(255 * Math.random());
@@ -19,9 +20,7 @@ const ColorBlockContainer = () => {
 
   const handleKeyDown = (e) => {
     if (e.code === "Space") {
-      console.log("blockpinstate: ", blockPinState);
       const updatedColors = colors.map((color, i) => {
-        console.log("index:", i, blockPinState[i]);
         if (!blockPinState[i]) {
           return randomizeColor();
         }
@@ -48,11 +47,9 @@ const ColorBlockContainer = () => {
   };
 
   const setBlockPinned = (index, isPinned) => {
-    //console.log(index, isPinned);
     let newBlockPinState = [...blockPinState];
     newBlockPinState[index] = isPinned;
     updatePin(newBlockPinState);
-    //console.log(newBlockPinState);
   };
 
   return (
@@ -75,8 +72,5 @@ const ColorBlockContainer = () => {
 const App = () => {
   return <ColorBlockContainer />;
 };
-
-//colorBlock accepts boolean for checked/not and a function to run
-//
 
 export default App;
