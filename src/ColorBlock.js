@@ -42,15 +42,19 @@ const ColorBlock = (props) => {
           {displayHex ? copyDisplayText : null}
         </p>
       </div>
-      <input
-        type="checkbox"
-        onChange={(e) => props.onChange(props.id, e.target.checked)}
-        checked={props.isPinned}
-      ></input>
-      <HeartIconFilled />
-      <HeartIconOutline />
+
+      <label>
+        <input
+          type="checkbox"
+          onChange={(e) => props.onChange(props.id, e.target.checked)}
+          checked={props.isPinned}
+        ></input>
+        <span class="label"> "------"</span>
+      </label>
     </div>
   );
 };
+
+// step 1: replace checkbox with div
 
 export default ColorBlock;

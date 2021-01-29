@@ -23,3 +23,26 @@
 .copyInstructions {
   font-size: 15px;
 }
+
+.toggleDiv {
+  background-color: red;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+.label {
+  display: inline-block;
+  height: 100px;
+  padding: 3px;
+  color: white;
+  background: url("./icons/heart-outline.svg") no-repeat left center;
+  user-select: none;
+  /* padding-left: 15px; */
+}
+input[type="checkbox"]:checked + .label {
+  /* background: #f00; */
+  /* color: red; */
+  background: url("./icons/heart-filled.svg") no-repeat left center;
+  user-select: none;
+}
