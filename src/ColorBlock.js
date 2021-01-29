@@ -1,5 +1,6 @@
 import { React, useState } from "react";
-
+import { ReactComponent as HeartIconFilled } from "./icons/heart-filled.svg";
+import { ReactComponent as HeartIconOutline } from "./icons/heart-outline.svg";
 const ColorBlock = (props) => {
   const [copyDisplayText, updateCopyDisplayText] = useState(
     "Click anywhere to copy"
@@ -46,6 +47,8 @@ const ColorBlock = (props) => {
         onChange={(e) => props.onChange(props.id, e.target.checked)}
         checked={props.isPinned}
       ></input>
+      <HeartIconFilled />
+      <HeartIconOutline />
     </div>
   );
 };
