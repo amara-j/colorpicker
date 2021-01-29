@@ -1,5 +1,5 @@
 import "./App.css";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import ColorBlock from "./ColorBlock.js";
 
 const ColorBlockContainer = () => {
@@ -16,6 +16,25 @@ const ColorBlockContainer = () => {
   const [colors, updateColors] = useState(
     blockPinState.map(() => randomizeColor())
   );
+
+  const handleKeyDown = (e) => {
+    if (e.code === "Space") {
+      console.log("blockpinstate: ", blockPinState);
+      const updatedColors = colors.map((color, i) => {
+        console.log("index:", i, blockPinState[i]);
+        if (!blockPinState[i]) {
+          return randomizeColor();
+        }
+        return color;
+      });
+      updateColors(updatedColors);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   const rgbToHex = (rgbArray) => {
     let hex = "";
