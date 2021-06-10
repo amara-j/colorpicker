@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/colorpicker/static/css/main.67135246.chunk.css",
+    "main.js": "/colorpicker/static/js/main.52d33b8d.chunk.js",
+    "main.js.map": "/colorpicker/static/js/main.52d33b8d.chunk.js.map",
+    "runtime-main.js": "/colorpicker/static/js/runtime-main.8eddb9e6.js",
+    "runtime-main.js.map": "/colorpicker/static/js/runtime-main.8eddb9e6.js.map",
+    "static/js/2.78fa2422.chunk.js": "/colorpicker/static/js/2.78fa2422.chunk.js",
+    "static/js/2.78fa2422.chunk.js.map": "/colorpicker/static/js/2.78fa2422.chunk.js.map",
+    "static/js/3.7cd95e5f.chunk.js": "/colorpicker/static/js/3.7cd95e5f.chunk.js",
+    "static/js/3.7cd95e5f.chunk.js.map": "/colorpicker/static/js/3.7cd95e5f.chunk.js.map",
+    "index.html": "/colorpicker/index.html",
+    "static/css/main.67135246.chunk.css.map": "/colorpicker/static/css/main.67135246.chunk.css.map",
+    "static/js/2.78fa2422.chunk.js.LICENSE.txt": "/colorpicker/static/js/2.78fa2422.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/colorpicker/static/media/heart-outline.67fffad6.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8eddb9e6.js",
+    "static/js/2.78fa2422.chunk.js",
+    "static/css/main.67135246.chunk.css",
+    "static/js/main.52d33b8d.chunk.js"
+  ]
+}
